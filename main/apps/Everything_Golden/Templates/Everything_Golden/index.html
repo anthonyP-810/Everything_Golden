@@ -1,0 +1,132 @@
+﻿  <!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Everything Golden</title>
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/jquery-3.1.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-flex.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-grid.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-reboot.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/main.css' %}" media="screen" title="" charset="utf-8" />
+    
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-toggleable-md navbar-inverse navbar-fixed-bottom" id="mainNav" style="background-color:#161515; padding:0px">
+            <a class="navbar-brand" id="logoHeader" href="#"><img src="{% static 'Everything_Golden/img/logo.jpg' %}" /></a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" id="logoBrand" href="#">Everything Golden</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hvr-underline-from-center" href="">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Classes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Prices</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Contact Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="#">Social Media</a>
+                    </li>
+                </ul>
+        </nav>
+        <header class="vertical-center" id="callToAction">
+            <div class="row">
+                <div class="col-md-10 offset-md-1" style="text-align:center;">
+                    <div>
+                        <h1 class="title"><span class="outside">Place Yourself </span><span class="inside">Acquaint Yourself</span> <span class="outside">Change Your Life</span></h1>
+                        <a class="btn btn-outline-warning btn-lg" role="button" href="#">Get Started Today</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="membershipOptions">
+            <div class="row membershipContainer">
+                <div class="col-md-3 innerContainer" style="text-align:center;">
+                    <h3 class="innerHeader">One Day Training</h3>
+                    <h2 class="membershipAmount">10<span id="membershipCents">00</span><span> Day</span></h2>
+                    <hr />
+                    <h6>Online access</h6>
+                    <hr />
+                    <h6>Group trainer</h6>
+                    <hr />
+                    <h6>Cardio</h6>
+                    <hr />
+                    <h6>Fitness Orientation</h6>
+                    <hr />
+                    <button class="btn btn-default btn-warning btn-md">Get Started</button>
+                </div>
+                <div class="col-md-3 innerContainer" style="text-align:center;">
+                    <h3 class="innerHeader">Standard Training</h3>
+                    <h2 class="membershipAmount">50<span id="membershipCents">00</span><span> Month</span></h2>
+                    <hr />
+                    <h6>Online access</h6>
+                    <hr />
+                    <h6>Group trainer</h6>
+                    <hr />
+                    <h6>Cardio</h6>
+                    <hr />
+                    <h6>Fitness Orientation</h6>
+                    <hr />
+                    <button class="btn btn-default btn-warning btn-md">Get Started</button>
+                </div>
+                <div class="col-md-3 innerContainer" style="text-align:center;">
+                    <h3 class="innerHeader">Full Access / Online</h3>
+                    <h2 class="membershipAmount">100<span id="membershipCents">00</span><span> Month</span></h2>
+                    <hr />
+                    <h6>Online access</h6>
+                    <hr />
+                    <h6>Group trainer</h6>
+                    <hr />
+                    <h6>Cardio</h6>
+                    <hr />
+                    <h6>Fitness Orientation</h6>
+                    <hr />
+                    <button class="btn btn-default btn-warning btn-md">Get Started</button>
+                </div>
+            </div>
+            <div class="row membershipContainer aboutSection">
+                <div class="col-md-3 slide">
+                    <h5>Trainer you can trust</h5>
+                    <h2>High Experience</h2>
+                    <button class="btn btn-default btn-warning btn-md">Read More</button>
+                </div>
+                <div class="col-md-3 slide slide-img">
+                    <img src="{% static 'Everything_Golden/img/carl_stokes.jpg' %}" />
+                    <h5 class="img-footer">Carl Stokes | Personal Trainer</h5>
+                </div>
+                <div class="col-md-3 slide slide-img">
+                    <iframe style="height:100%" src="{% static 'Everything_Golden/img/workout_carl.mp4' %}" height="264" width="280" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-3 slide slide-img">
+                    <p>Here will be a description of who you are and what you are offering. Send me some data so I can fill this out
+                    properly. fjkfld;sa ffdjasklf fdsjaklfjdlas fdsaklfj fdsa fjklfdjsakl;f fd sfirvjivo</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
