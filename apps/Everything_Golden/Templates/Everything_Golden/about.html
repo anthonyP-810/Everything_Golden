@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Everything_Golden</title>
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/jquery-3.1.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-flex.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-grid.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-reboot.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/main.css' %}" media="screen" title="" charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel()
+        })
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar  navbar-inverse navbar-fixed-bottom" id="mainNav" role="navigation" style="background-color:#161515; padding:0px">
+            <a class="navbar-brand" id="logoHeader" href="#"><img src="{% static 'Everything_Golden/img/logo.jpg' %}" /></a>
+            <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" id="logoBrand" href="#">Everything Golden</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hvr-underline-from-center" href="{%url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'about'%}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'members' %}">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'merchandise'%}">Merchandise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'schedule'%}">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'stories'%}">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'contact'%}">Contact Me</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <header>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{% static 'Everything_Golden/img/logo1.jpg' %}" alt="Company_Logo" />
+                    <h2 class="bold">Everything <span class="golden">Golden</span></h2>
+                </div>
+            </div>
+        </header>
+        <section style="padding:40px 0px 70px 0px">
+            <div class="row ">
+               <div class="col-md-10 offset-md-1">
+                   <h2>Carl Crunch Stokes</h2>
+                   <h3>Personal Trainer</h3>
+               </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-3 offset-md-1">
+                    <img src="{% static 'Everything_Golden/img/carl_about.jpg' %}" alt="Company_Logo" style="height:300px"/>
+                </div>
+                <div class="col-md-6">
+                    <p>I am a fitness guru who resides in Long Beach California. I challenge you to join one of the best fitness experience Long Beach has to offer.</p>
+                    <p>I am full of energy and motivating vibes. I have a passion to educate clients from all walks of life about the importance of nutrition and fitness.</p>
+                    <p>Together we will transform your quality of life through active participation and the intergration of quided fitness programs, to make your health goals become a re
+                    ality. My personal mantra is: Throuh Dedication, Determination and Discipline; You will be able to: "Place Yourself, Acquaint Yourself, Move Yourself and Change Your Life."</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

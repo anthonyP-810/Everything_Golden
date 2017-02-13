@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Everything Golden</title>
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/jquery-3.1.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-flex.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-grid.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-reboot.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/main.css' %}" media="screen" title="" charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            var newMem = [];
+            var memType = [];
+            $('#form_register').hide();
+            $('#form_memberships').hide();
+            $('#register_tab').click(function () {
+                $('#login_tab').toggleClass("active")
+                $(this).toggleClass("active")
+                $('#form_login').slideUp("slow", function () {
+                    $('#form_register').slideDown("slow");
+                });
+            });
+
+            $('#login_tab').click(function () {
+                $('#register_tab').toggleClass("active")
+                $(this).toggleClass("active")
+                $('#form_register').slideUp("slow", function () {
+                    $('#form_login').slideDown("slow")
+                })
+            });
+
+            $('#form_register').submit(function (e) {
+                e.preventDefault();
+                
+                newMem.push({
+                    'first_name': $('#form_register input[name=first_name]').val(),
+                    'last_name': $('#form_register input[name=last_name]').val(),
+                    'email': $('#form_register input[name=email').val(),
+                    'age': $('#form_register input[name=age]').val(),
+                    'gender': $('#form_register select[name=gender]').val(),
+                    'phone': $('#form_register input[name=phone]').val(),
+                    'password': $('#form_register input[name=password]').val(),
+                    'password_confirmation': $('#form_register input[name=password_confirmation]').val(),
+                })
+                console.log(newMem[0])
+                $('#form_register').slideUp("slow", function () {
+                    $('#form_memberships').slideDown("slow")
+                });
+                
+            });
+
+            $('#form_memberships').submit(function (e) {
+                memType.push({ 'tier': $('#form_memberships input[name=membershipType]:checked').val() })
+                $.ajax({
+                    method: 'POST',
+                    url: '/register',
+                    data: { 'form_data': JSON.stringify({ 'member': newMem[0], 'membershipType': memType[0] }) },
+                    success: function (data) {
+                        window.location.href = "" + encodeURIComponent(data.redirect_to);
+                    },
+                    error: function (data) {
+                        
+                        console.log(data)
+                    }
+
+                });
+                return false;
+            });
+            
+        })
+    </script>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="container-fluid">
+        <nav class="navbar  navbar-inverse navbar-fixed-bottom" id="mainNav" role="navigation" style="background-color:#161515; padding:0px">
+            <a class="navbar-brand" id="logoHeader" href="#"><img src="{% static 'Everything_Golden/img/logo.jpg' %}" /></a>
+            <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" id="logoBrand" href="#">Everything Golden</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hvr-underline-from-center" href="{%url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'about'%}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'members' %}">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'merchandise'%}">Merchandise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'schedule'%}">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'stories'%}">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'contact'%}">Contact Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'profile'%}">My Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <header>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="{% static 'Everything_Golden/img/logo1.jpg' %}" alt="Company_Logo" />
+                    <h2 class="bold">Everything <span class="golden">Golden</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center" id="backdrop">
+                    <h1>Members</h1>
+                </div>
+            </div>
+        </header>
+            <section style="padding:40px 0px 70px 0px">
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 card card-outline-primary mb-3">
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-center">
+                                <ul class="nav nav-pills nav-fill" style="padding-top:30px">
+                                    <li class="nav-item">
+                                        <label class="nav-link active" id="login_tab">Login</label>
+                                    </li>
+                                    <li class="nav-item">
+                                        <label class="nav-link" id="register_tab">Register</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="form_login">
+                            <form action="/login" method="post">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="email" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="password" />
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary button" style="margin-bottom:10px">
+                                    <b>Join</b>
+                                </button>
+                            </form>
+                        </div>
+                        <div id="form_register">
+                            <form action="{%url 'register' %}" method="post">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <label for="first_name" class="col-md-3 control-label">First Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="first_name" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="last_name" class="col-md-3 control-label">Last Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="last_name" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="age" class="col-md-3 control-label">Age</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="age" aria-describedby="aliasHelp" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-3 control-label">Email Address</label>
+                                    <div class="col-md-9">
+                                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="password" aria-describedby="passwordHelp" />
+                                        <small class="form-text text-muted">Must be 8-20 Characters Long</small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="register[password_confirmation]" class="col-md-3 control-label">Password Confirmation</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="password_confirmation" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="phone" class="col-md-3 control-label">Phone Number</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="phone" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="gender" class="col-md-3 control-label">Gender</label>
+                                    <div class="col-md-9">
+                                        <select name="gender">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary button" style="margin-bottom:10px">
+                                    <b>Next</b>
+                                </button>
+                            </form>
+                        </div>
+                            <form action="/" id="form_memberships" method="post">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <label for="" class="col-md-3 control-label">Daily</label>
+                                    <div class="col-md-9">
+                                        <input type="radio" class="form-check-input" name="membershipType" id="option_1" value="1"/>
+                                        One Day Training / $10.00 Daily
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-md-3 control-label">Monthly</label>
+                                    <div class="col-md-9">
+                                        <input type="radio" class="form-check-input" name="membershipType" id="option_2" value="2"/>
+                                        Standard Training / $50.00 Monthly
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-md-3 control-label">Monthly</label>
+                                    <div class="col-md-9">
+                                        <input type="radio" class="form-check-input" name="membershipType" id="option_3" value="3" />
+                                        Full Access / $100.00 Monthly
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary button" style="margin-bottom:10px">
+                                    <b>Join</b>
+                                </button>
+                            </form>                    
+                    </div>
+                </div>
+            </section>
+     
+    </div>
+</body>
+</html>

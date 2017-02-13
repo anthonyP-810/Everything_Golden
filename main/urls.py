@@ -18,4 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('apps.Everything_Golden.urls')),
+    url(r'^admin/', admin.site.urls),
 ]

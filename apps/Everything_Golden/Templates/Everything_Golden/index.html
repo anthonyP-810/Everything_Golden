@@ -17,48 +17,47 @@
     
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-toggleable-md navbar-inverse navbar-fixed-bottom" id="mainNav" style="background-color:#161515; padding:0px">
+    <div class="container-fluid wrapper">
+        <nav class="navbar  navbar-inverse navbar-fixed-bottom" id="mainNav" role="navigation" style="background-color:#161515; padding:0px">
             <a class="navbar-brand" id="logoHeader" href="#"><img src="{% static 'Everything_Golden/img/logo.jpg' %}" /></a>
+              <div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" id="logoBrand" href="#">Everything Golden</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link hvr-underline-from-center" href="">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link hvr-underline-from-center" href="{%url 'index' %}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">About</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'about'%}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Classes</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'members' %}">Members</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Prices</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'merchandise'%}">Merchandise</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Schedule</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'schedule'%}">Schedule</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Events</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'stories'%}">Stories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Stories</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'contact'%}">Contact Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Contact Me</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#">Social Media</a>
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'profile'%}">My Account</a>
                     </li>
                 </ul>
-        </nav>
-        <header class="vertical-center" id="callToAction">
+            </div>
+</nav>
+        <header class="vertical-center">
             <div class="row">
                 <div class="col-md-10 offset-md-1" style="text-align:center;">
-                    <div>
-                        <h1 class="title"><span class="outside">Place Yourself </span><span class="inside">Acquaint Yourself</span> <span class="outside">Change Your Life</span></h1>
-                        <a class="btn btn-outline-warning btn-lg" role="button" href="#">Get Started Today</a>
+                    <div id="callToAction">
+                        <h1 class="title"><span class="outside">Place Yourself </span><span class="inside">Acquaint Yourself</span> <span class="outside">Move Yourself</span></h1>
+                        <a class="btn btn-outline-warning btn-lg" role="button" href="{% url 'members' %}">Get Started Today</a>
                     </div>
                 </div>
             </div>
@@ -77,7 +76,7 @@
                     <hr />
                     <h6>Fitness Orientation</h6>
                     <hr />
-                    <button class="btn btn-default btn-warning btn-md">Get Started</button>
+                    <a class="btn btn-default btn-warning btn-md buttonMargin" href="{% url 'members' %}" style="margin:10px">Get Started</a>
                 </div>
                 <div class="col-md-3 innerContainer" style="text-align:center;">
                     <h3 class="innerHeader">Standard Training</h3>
@@ -91,7 +90,7 @@
                     <hr />
                     <h6>Fitness Orientation</h6>
                     <hr />
-                    <button class="btn btn-default btn-warning btn-md">Get Started</button>
+                    <a class="btn btn-default btn-warning btn-md" href="{% url 'members' %}" style="margin:10px">Get Started</a>
                 </div>
                 <div class="col-md-3 innerContainer" style="text-align:center;">
                     <h3 class="innerHeader">Full Access / Online</h3>
@@ -105,26 +104,30 @@
                     <hr />
                     <h6>Fitness Orientation</h6>
                     <hr />
-                    <button class="btn btn-default btn-warning btn-md">Get Started</button>
+                    <a class="btn btn-default btn-warning btn-md" href="{% url 'members' %}" style="margin:10px">Get Started</a>
                 </div>
             </div>
             <div class="row membershipContainer aboutSection">
                 <div class="col-md-3 slide">
                     <h5>Trainer you can trust</h5>
                     <h2>High Experience</h2>
+                    <p>
+                        Here will be a description of who you are and what you are offering. Send me some data so I can fill this out
+                        properly. 
+                    </p>
                     <button class="btn btn-default btn-warning btn-md">Read More</button>
                 </div>
-                <div class="col-md-3 slide slide-img">
+                <div class="col-md-4 slide slide-img">
                     <img src="{% static 'Everything_Golden/img/carl_stokes.jpg' %}" />
                     <h5 class="img-footer">Carl Stokes | Personal Trainer</h5>
                 </div>
-                <div class="col-md-3 slide slide-img">
-                    <iframe style="height:100%" src="{% static 'Everything_Golden/img/workout_carl.mp4' %}" height="264" width="280" allowfullscreen></iframe>
+                <div class="col-md-4 slide video-container">
+                    <iframe src="https://www.youtube.com/embed/fZIs6RZ4cJA" type="video/mp4" height="350" width="280" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <!--<iframe src="https://player.vimeo.com/video/203318166" width="280" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
                 </div>
-                <div class="col-md-3 slide slide-img">
-                    <p>Here will be a description of who you are and what you are offering. Send me some data so I can fill this out
-                    properly. fjkfld;sa ffdjasklf fdsjaklfjdlas fdsaklfj fdsa fjklfdjsakl;f fd sfirvjivo</p>
-                </div>
+                <!--<div class="col-md-3 slide slide-img">
+                    
+                </div>-->
             </div>
         </section>
     </div>

@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Everything_Golden</title>
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/jquery-3.1.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'Everything_Golden/scripts/bootstrap.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-flex.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-grid.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/bootstrap-reboot.min.css' %}" media="screen" title="" charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'Everything_Golden/css/main.css' %}" media="screen" title="" charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#events_attending').hide()
+            $('#upcoming_events').hide()
+            $('#my_event').click(function () {
+                $('#upcoming_events').slideUp('slow', function () {
+                    $('#events_attending').slideDown('slow')
+                })
+
+            });
+
+            $('#other_events').click(function () {
+                $('#events_attending').slideUp('slow', function () {
+                    $('#upcoming_events').slideDown('slow')
+                })
+
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar  navbar-inverse navbar-fixed-bottom" id="mainNav" role="navigation" style="background-color:#161515; padding:0px">
+            <a class="navbar-brand" id="logoHeader" href="#"><img src="{% static 'Everything_Golden/img/logo.jpg' %}" /></a>
+            <div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" id="logoBrand" href="#">Everything Golden</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link hvr-underline-from-center" href="{%url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'about'%}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'members' %}">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'merchandise'%}">Merchandise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'schedule'%}">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'stories'%}">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'contact'%}">Contact Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="{% url 'profile'%}">My Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <header>
+            <div class="row" style="border-bottom:2px solid black">
+                <div class="col-md-12 text-center">
+                    <img src="{% static 'Everything_Golden/img/logo1.jpg' %}" alt="Company_Logo" />
+                    <h2 class="bold">Everything <span class="golden">Golden</span></h2>
+                </div>
+            </div>
+        </header>
+        <section style="padding:40px 0px 70px 0px">
+            <div class="row">
+                <div class="col-md-3">
+                    {% for u in users %}
+                    <h1>Welcome {{u.first_name}}</h1>
+                    {% endfor %}
+                </div>
+                <div class="col-md-8 text-center">
+                    <a class="about_links nav-link hvr-underline-from-center" href="#" id="my_event">My Schedule</a>
+                    <a class="about_links nav-link hvr-underline-from-center" href="#" id="other_events">Upcoming Events</a>
+                </div>
+                <div class="col-md-1">
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </section>
+        <section style="padding:40px 0px 70px 0px">
+            <div class="row" id="events_attending">
+                <div class="col-md-3">
+                    <h3>Events Attending </h3>
+                    {% for e in events %}
+                    <h5>{{e.title}}</h5>
+                    <p>Event Date: {{e.date_event}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row" id="upcoming_events">
+                <div class="col-md-3">
+                    <h3>Upcoming Events</h3>
+                    {% for e in upcoming_events %}
+                    <h5>{{e.title}}</h5>
+                    <p>Event Date: {{e.date_event}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

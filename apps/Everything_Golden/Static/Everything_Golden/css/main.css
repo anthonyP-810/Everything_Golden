@@ -3,6 +3,7 @@
     overflow-y:scroll;
     overflow-x:hidden;
 }
+
 html, body
 {
     margin:0px;
@@ -12,12 +13,13 @@ html, body
 
 body
 {
-    color:white;
-    background-color: transparent;
+    
 }
 
-html 
-{ 
+.wrapper
+{
+    padding:0px;
+    margin:0px;
   background: url(../img/backgroundMain.jpg) no-repeat center top fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -25,22 +27,19 @@ html
   background-size: cover;
 }
 
-.container
-{
-    width:100%;
-    padding:0px;
-
+html 
+{ 
 }
 
 #logoHeader
 {
-   padding:0px 0px 0px 100px
+   padding:0px 0px 0px 100px;
 }
 
-.callToAction
+#callToAction
 {
+    margin-top:200px;
     font-variant-caps:all-small-caps;
-    font-size:30pt;
     font-weight:bold;
 }
 
@@ -161,7 +160,7 @@ header .vertical-center {
 
 #callToAction
 {
-    margin-top:260px;
+    
 }
 
 .outside
@@ -257,7 +256,11 @@ header .vertical-center {
     background-color: lightgrey;
 }
 
-.innerContainer button
+.innderContainer button
+{
+    margin: 10px
+}
+div.innerContainer a.buttonMargin
 {
     margin:10px;
 }
@@ -269,8 +272,24 @@ header .vertical-center {
 
 .slide-img img
 {
-    height:200px;
+    height:auto;
     width:100%
+}
+
+.video-container {
+	position:relative;
+	padding-bottom:28.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
 }
 
 .aboutSection
@@ -285,4 +304,65 @@ header .vertical-center {
     padding:10px;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
+}
+
+.text-center
+{
+    text-align:center;
+}
+
+#backdrop
+{
+    background: url(../img/woman_legpress.jpg) no-repeat center;
+    background-size:cover;
+    height: 250px;
+}
+
+#merch
+{
+    background: url(../img/merch_main.jpg) no-repeat center;
+    background-size:cover;
+    height: 250px;
+    border: 2px solid black;
+}
+
+div a.about_links
+{
+    color:#e8751e;
+    font-size:1.5em;
+    padding:0px 10px 0px 0px;
+}
+
+#merch h1
+{
+    padding-top:80px;
+    color:white;
+    font-weight:bold;
+}
+
+.card
+{
+    width:100%;
+}
+
+#backdrop h1
+{
+    padding-top:80px;
+    color:white;
+    font-weight:bold;
+}
+
+.bold
+{
+    font-weight:bold;
+}
+
+.golden
+{
+    color:#e4a014;
+}
+
+form button
+{
+    margin-bottom:10px
 }
